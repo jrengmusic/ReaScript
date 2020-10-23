@@ -3,7 +3,7 @@
  * About: Track/Item coloring palette instantaneously with minimum click
  * Screenshot: 
  * Author: JRENG!
- * Author URI: http://jrengmusic.com
+ * Author URI: https://jrengmusic.com
  * Repository: GitHub > jrengmusic > ReaScript
  * Repository URI: https://github.com/jrengmusic/ReaScript
  * Licence: WTFPL
