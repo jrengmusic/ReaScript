@@ -1,16 +1,16 @@
 --[[
  * ReaScript Name: Colorize!
  * About: Track/Item coloring palette instantaneously with minimum click
- * Screenshot: 
+ * Screenshot: https://stash.reaper.fm/40517/main.png
  * Author: JRENG!
  * Author URI: http://jrengmusic.com
  * Repository: GitHub > jrengmusic > ReaScript
  * Repository URI: https://github.com/jrengmusic/ReaScript
  * Licence: WTFPL
  * Forum Thread: JRENG! Colorize!
- * Forum Thread URI: 
+ * Forum Thread URI: https://forum.cockos.com/showthread.php?t=243885
  * REAPER: 5.0
- * Version: 1.0.
+ * Version: 1.0
 --]]
  
 --[[
