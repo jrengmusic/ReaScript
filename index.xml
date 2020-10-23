@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="JRENG! ReaScript" commit="852ce44bfff873132825a199bc5b3629f9cf376e">
+<index version="1" commit="852ce44bfff873132825a199bc5b3629f9cf376e" name="JRENG! ReaScript">
   <category name="MIDI/COG">
     <reapack name="JRENG! COG.lua" type="script" desc="Chord Generator">
       <metadata>
