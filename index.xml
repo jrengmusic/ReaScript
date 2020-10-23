@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index version="1" name="JRENG! ReaScript" commit="010973be4c2ee5e7700069bfe0b8cd9d48df69f5">
+  <category name="MIDI/COG">
+    <reapack name="JRENG! COG.lua" type="script" desc="Chord Generator">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Chord generator for MIDI Editor\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0." author="JRENG!" time="2020-10-23T08:15:29Z">
+        <source main="main">https://github.com/jrengmusic/ReaScript/raw/852ce44bfff873132825a199bc5b3629f9cf376e/MIDI/COG/JRENG!%20COG.lua</source>
+      </version>
+      <version name="1.0.0" author="JRENG!" time="2020-10-23T08:24:45Z">
+        <source main="main">https://github.com/jrengmusic/ReaScript/raw/010973be4c2ee5e7700069bfe0b8cd9d48df69f5/MIDI/COG/JRENG!%20COG.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Utility">
+    <reapack name="JRENG! Colorize!.lua" type="script" desc="Colorize!">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Track/Item coloring palette instantaneously with minimum click\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0." author="JRENG!" time="2020-10-23T07:53:19Z">
+        <source main="main">https://github.com/jrengmusic/ReaScript/raw/3aac3359c5b64e837785d4130d21c1016f1ab549/Utility/JRENG!%20Colorize!.lua</source>
+      </version>
+      <version name="1.0.0" author="JRENG!" time="2020-10-23T08:24:45Z">
+        <source main="main">https://github.com/jrengmusic/ReaScript/raw/010973be4c2ee5e7700069bfe0b8cd9d48df69f5/Utility/JRENG!%20Colorize!.lua</source>
+      </version>
+    </reapack>
+  </category>
+</index>
