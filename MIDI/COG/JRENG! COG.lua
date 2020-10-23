@@ -10,7 +10,7 @@
  * Forum Thread: JRENG! Chord Generator
  * Forum Thread URI: 
  * REAPER: 5.0
- * Version: 1.0.
+ * Version: 1.0
 --]]
  
 --[[
