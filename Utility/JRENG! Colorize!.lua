@@ -102,7 +102,10 @@ function setColor()
         local r = round(map(i, 0, countSelTrack-1, r1, r2))
         local g = round(map(i, 0, countSelTrack-1, g1, g2))
         local b = round(map(i, 0, countSelTrack-1, b1, b2))
-        if r and g and b then reaper.SetTrackColor (track, reaper.ColorToNative(r, g, b)) end
+        if r >= 0 and g >= 0 and b >= 0 then
+          local color = reaper.ColorToNative(r, g, b)
+          reaper.SetTrackColor (track, color)
+        end
       end
     reaper.Undo_EndBlock("Colorize! track", -1)
     elseif itemSet == 1 then
@@ -112,10 +115,12 @@ function setColor()
         local r = round(map(i, 0, countSelItem-1, r1, r2))
         local g = round(map(i, 0, countSelItem-1, g1, g2))
         local b = round(map(i, 0, countSelItem-1, b1, b2))
-        local color = reaper.ColorToNative(r, g, b)
-        item = reaper.GetSelectedMediaItem(0, i)
-        reaper.SetMediaItemInfo_Value(item, "I_CUSTOMCOLOR", color|16777216)
-        reaper.UpdateItemInProject(item)
+        if r >= 0 and g >= 0 and b >= 0 then
+          local color = reaper.ColorToNative(r, g, b)
+          item = reaper.GetSelectedMediaItem(0, i)
+          reaper.SetMediaItemInfo_Value(item, "I_CUSTOMCOLOR", color|16777216)
+          reaper.UpdateItemInProject(item)
+        end
       end
     end
   reaper.TrackList_AdjustWindows(false)
