@@ -10,7 +10,7 @@
  * Forum Thread: JRENG! Colorize!
  * Forum Thread URI: 
  * REAPER: 5.0
- * Version: 1.0
+ * Version: 1.0.
 --]]
  
 --[[
@@ -107,8 +107,14 @@ function setColor()
     reaper.Undo_EndBlock("Colorize! track", -1)
     elseif itemSet == 1 then
       for i = 0 , countSelItem-1 do
+      local r1, g1, b1 = reaper.ColorFromNative(color1)
+      local r2, g2, b2 = reaper.ColorFromNative(color2)
+      local r = round(map(i, 0, countSelItem-1, r1, r2))
+      local g = round(map(i, 0, countSelItem-1, g1, g2))
+      local b = round(map(i, 0, countSelItem-1, b1, b2))
+      local color = reaper.ColorToNative(r, g, b)
       item = reaper.GetSelectedMediaItem(0, i)
-      reaper.SetMediaItemInfo_Value(item, "I_CUSTOMCOLOR", set_color|16777216)
+      reaper.SetMediaItemInfo_Value(item, "I_CUSTOMCOLOR", color|16777216)
       reaper.UpdateItemInProject(item)
       end
     end
