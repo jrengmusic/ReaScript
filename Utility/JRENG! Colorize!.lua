@@ -1,16 +1,16 @@
 --[[
  * ReaScript Name: Colorize!
  * About: Track/Item coloring palette instantaneously with minimum click
- * Screenshot: 
+ * Screenshot: https://stash.reaper.fm/40517/main.png
  * Author: JRENG!
  * Author URI: http://jrengmusic.com
  * Repository: GitHub > jrengmusic > ReaScript
  * Repository URI: https://github.com/jrengmusic/ReaScript
  * Licence: WTFPL
  * Forum Thread: JRENG! Colorize!
- * Forum Thread URI: 
+ * Forum Thread URI: https://forum.cockos.com/showthread.php?t=243885 
  * REAPER: 5.0
- * Version: 1.0.
+ * Version: 1.0
 --]]
  
 --[[
@@ -21,6 +21,7 @@
 --]]
 
 grad = false
+curve = 1
 ----------------------- USER CONFIG --------------------
 row = 11
 col = 48
@@ -87,9 +88,16 @@ function get_context ()
   end
 end
 
-function map(value, iMin, iMax, oMin, oMax) local n, v
-  n = ((value - iMin) / (iMax - iMin))
-  v = oMin + n * (oMax-oMin)
+function map(value, iMin, iMax, oMin, oMax, shape) local n, v
+  if math.abs(iMin - iMax) < 0.00000011920929 then v = oMin else
+    n = ((value - iMin) / (iMax - iMin))
+    v = oMin + (n^shape) * (oMax - oMin)
+    if (oMax < oMin) then
+      if (v < oMax) then v = oMax elseif (v > oMin) then v = oMin end
+    else
+      if (v > oMax) then v = oMax elseif (v < oMin ) then v = oMin end
+    end
+  end
   return v
 end
 
@@ -99,9 +107,9 @@ function setColor()
         track = reaper.GetSelectedTrack(0, i)
         local r1, g1, b1 = reaper.ColorFromNative(color1)
         local r2, g2, b2 = reaper.ColorFromNative(color2)
-        local r = round(map(i, 0, countSelTrack-1, r1, r2))
-        local g = round(map(i, 0, countSelTrack-1, g1, g2))
-        local b = round(map(i, 0, countSelTrack-1, b1, b2))
+        local r = round(map(i, 0, countSelTrack-1, r1, r2, 1))
+        local g = round(map(i, 0, countSelTrack-1, g1, g2, 1))
+        local b = round(map(i, 0, countSelTrack-1, b1, b2, 1))
         if r >= 0 and g >= 0 and b >= 0 then
           local color = reaper.ColorToNative(r, g, b)
           reaper.SetTrackColor (track, color)
@@ -112,9 +120,9 @@ function setColor()
       for i = 0 , countSelItem-1 do
         local r1, g1, b1 = reaper.ColorFromNative(color1)
         local r2, g2, b2 = reaper.ColorFromNative(color2)
-        local r = round(map(i, 0, countSelItem-1, r1, r2))
-        local g = round(map(i, 0, countSelItem-1, g1, g2))
-        local b = round(map(i, 0, countSelItem-1, b1, b2))
+        local r = round(map(i, 0, countSelItem-1, r1, r2, 1))
+        local g = round(map(i, 0, countSelItem-1, g1, g2, 1))
+        local b = round(map(i, 0, countSelItem-1, b1, b2, 1))
         if r >= 0 and g >= 0 and b >= 0 then
           local color = reaper.ColorToNative(r, g, b)
           item = reaper.GetSelectedMediaItem(0, i)
@@ -140,7 +148,8 @@ function draw_palette(_) local  offset, pal_w
       if j == 1 then
         red,green,blue=HSLtoRGB(0, 0, 1-i/col) 
       else
-        red,green,blue=HSLtoRGB(i/(col), 1, (row-j+1)/row)
+        local hue = map(i, 1, col, 0, 0.9, 1)
+        red, green, blue=HSLtoRGB(hue, 1, (row-j+1)/row)
       end
         y = round (j * (pal_w / col) + offset)
         gfx.set(red, green, blue, 1)
